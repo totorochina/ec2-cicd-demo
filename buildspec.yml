@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing Prerequisites...
+      - pip install tornado
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Python code...
+      - echo Nothing to do...
+      - echo Do some test here...
+  post_build:
+    commands:
+      - echo Packing...to be handled by CodeBuild
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '*.py'
+    - '*.sh'

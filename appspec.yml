@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /data
+hooks:
+  ApplicationStart:
+    - location: start.sh
+      timeout: 30
+      runas: root
+  ApplicationStop:
+    - location: stop.sh
+      timeout: 30
+      runas: root
