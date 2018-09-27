@@ -28,6 +28,7 @@ pip install tornado
 mkdir -p /data
 chmod 1777 /data
 cd /data
-aws s3 cp s3://totorochina-private/apidemo.zip .
+#aws s3 cp s3://totorochina-private/apidemo.zip .
+aws s3 cp s3://hzchen-private-ore/apidemo.zip .
 unzip apidemo.zip
 bash start.sh
