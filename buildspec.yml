@@ -19,3 +19,5 @@ artifacts:
   files:
     - '*.py'
     - '*.sh'
+    - '*.yml'
+    - '*.yaml'
