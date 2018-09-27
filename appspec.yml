@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /data
 hooks:
+  BeforeInstall:
+    - location: clearfiles.sh
+      timeout: 30
+      runas: root
   ApplicationStart:
     - location: start.sh
       timeout: 30
