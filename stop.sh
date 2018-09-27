@@ -15,5 +15,8 @@ else
 	RESULT=$?
 fi
 
+# delete all files
+rm -f *.py *.yml *.sh
+
 echo "stop.sh run at ${DT}, result is ${RESULT}" >> /data/stop.log
 exit ${RESULT}
