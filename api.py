@@ -29,11 +29,20 @@ class GetIpHandler(tornado.web.RequestHandler):
         }
         self.write(response)
 
+class GetHeaderHandler(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
+    def initialize(self, *args, **kwargs):
+        self.remote_ip = self.request.headers.get('X-Forwarded-For', self.request.headers.get('X-Real-Ip', self.request.remote_ip))
+        self.using_ssl = (self.request.headers.get('X-Scheme', 'http') == 'https')
+    def get(self):
+        self.write("Hello " + ("s" if self.using_ssl else "") + " " + self.remote_ip)
+
 def main():
     tornado.options.parse_command_line()
     application = tornado.web.Application([
         (r"/", MainHandler),
         (r"/ip", GetIpHandler),
+        (r"/header", GetHeaderHandler),
     #], autoreload = True)
     ])
     http_server = tornado.httpserver.HTTPServer(application)
