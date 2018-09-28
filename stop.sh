@@ -12,7 +12,8 @@ then
 else
 	PID=$(ps -ef | grep -i "python api.py" | grep -v grep | tr -s " " | cut -d " " -f2)
 	kill ${PID}
-	RESULT=$?
+	#RESULT=$?
+	RESULT=0
 fi
 
 # delete all files
