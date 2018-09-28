@@ -14,7 +14,7 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         response = {
             "type": "app",
-            "version": "0.1"
+            "version": "0.2"
         }
         self.write(response)
 
@@ -24,7 +24,7 @@ class GetIpHandler(tornado.web.RequestHandler):
         ip = requests.get('http://checkip.amazonaws.com/')
         response = {
             "type": "app",
-            "version": "0.1",
+            "version": "0.2",
             "public-ip": ip.text.replace('\n', '')
         }
         self.write(response)
