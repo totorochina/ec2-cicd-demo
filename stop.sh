@@ -1,10 +1,10 @@
 #!/bin/bash
 
 DT=$(date +'%Y%m%d-%H%M%S')
-PIDFILE="api.pid"
+PIDFILE="/data/api.pid"
 RESULT=0
 
-if [ -e ${PIDFILE} ]
+if [ -s ${PIDFILE} ]
 then
 	kill $(cat ${PIDFILE})
 	RESULT=$?
