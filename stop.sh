@@ -2,18 +2,22 @@
 
 DT=$(date +'%Y%m%d-%H%M%S')
 PIDFILE="api.pid"
-kill $(cat ${PIDFILE})
-RESULT=$?
-rm -f ${PIDFILE}
+RESULT=0
 
-if [ ${RESULT} = "0" ]
+if [ -e ${PIDFILE} ]
 then
-	:
+	kill $(cat ${PIDFILE})
+	RESULT=$?
+	rm -f ${PIDFILE}
 else
 	PID=$(ps -ef | grep -i "python api.py" | grep -v grep | tr -s " " | cut -d " " -f2)
-	kill ${PID}
-	#RESULT=$?
-	RESULT=0
+	if [ "x${PID}" = "x" ]
+	then
+		RESULT=0
+	else
+		kill ${PID}
+		RESULT=$?
+	fi
 fi
 
 # delete all files
